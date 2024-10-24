@@ -13,7 +13,8 @@ class MenusController extends Controller
      */
     public function index()
     {
-        //
+        $menus = Menus::all();
+        return $menus;
     }
 
     /**
@@ -29,7 +30,17 @@ class MenusController extends Controller
      */
     public function store(StoreMenusRequest $request)
     {
-        //
+        $menus = new Menus;
+        $menus->name = $request->name;
+        $menus->price = $request->price;
+        $menus->description = $request->description;
+        $menus->category_id = $request->category_id;
+        $menus->offers = $request->offers;
+        $menus->allegens = $request->allegens;
+       
+        $menus->save();
+
+        return $menus;
     }
 
     /**
@@ -53,7 +64,17 @@ class MenusController extends Controller
      */
     public function update(UpdateMenusRequest $request, Menus $menus)
     {
-        //
+        $menus = Menus::find($request->id);
+        $menus->name = $request->name;
+        $menus->price = $request->price;
+        $menus->description = $request->description;
+        $menus->category_id = $request->category_id;
+        $menus->offers = $request->offers;
+        $menus->allegens = $request->allegens;
+       
+        $menus->save();
+
+        return $menus;
     }
 
     /**
